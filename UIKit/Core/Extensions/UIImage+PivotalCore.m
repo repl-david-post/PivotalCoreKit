@@ -27,7 +27,7 @@
     // Build a context that's the same dimensions as the new size
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     CGContextRef bitmap = CGBitmapContextCreate(NULL, newRect.size.width, newRect.size.height, 8, 4 * newRect.size.width,
-                                                colorSpace, kCGBitmapAlphaInfoMask & kCGImageAlphaPremultipliedFirst);
+                                                colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
     CGColorSpaceRelease(colorSpace);
 
     // Rotate and/or flip the image if required by its orientation
@@ -99,7 +99,7 @@
                                                  CGImageGetBitsPerComponent(image.CGImage),
                                                  0,
                                                  CGImageGetColorSpace(image.CGImage),
-                                                 kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
+                                                 (CGBitmapInfo)kCGBitmapByteOrderDefault | (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
 
     // Create a clipping path with rounded corners
     CGContextBeginPath(context);
@@ -157,7 +157,7 @@
                                                           8,
                                                           0,
                                                           CGImageGetColorSpace(imageRef),
-                                                          kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedFirst);
+                                                          (CGBitmapInfo)kCGBitmapByteOrderDefault | (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
 
     // Draw the image into the context and retrieve the new image, which will now have an alpha layer
     CGContextDrawImage(offscreenContext, CGRectMake(0, 0, width, height), imageRef);
