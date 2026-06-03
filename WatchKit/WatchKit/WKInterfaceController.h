@@ -52,8 +52,11 @@ typedef NS_ENUM(NSInteger, WKAlertControllerStyle) {
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex;
 - (void)handleActionWithIdentifier:(nullable NSString *)identifier
              forRemoteNotification:(NSDictionary *)remoteNotification;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)handleActionWithIdentifier:(nullable NSString *)identifier
               forLocalNotification:(UILocalNotification *)localNotification;
+#pragma clang diagnostic pop
 - (void)handleUserActivity:(nullable NSDictionary *)userInfo;
 
 - (void)setTitle:(NSString *)title;
@@ -98,8 +101,11 @@ typedef NS_ENUM(NSInteger, WKAlertControllerStyle) {
 //- (instancetype)init;
 - (void)didReceiveRemoteNotification:(NSDictionary *)remoteNotification
                       withCompletion:(void(^)(WKUserNotificationInterfaceType interface)) completionHandler;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)didReceiveLocalNotification:(UILocalNotification *)localNotification
                      withCompletion:(void(^)(WKUserNotificationInterfaceType interface)) completionHandler;
+#pragma clang diagnostic pop
 
 @end
 

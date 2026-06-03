@@ -10,8 +10,11 @@
 - (void)table:(WKInterfaceTable *)table didSelectRowAtIndex:(NSInteger)rowIndex NS_REQUIRES_SUPER;
 - (void)handleActionWithIdentifier:(NSString *)identifier
              forRemoteNotification:(NSDictionary *)remoteNotification NS_REQUIRES_SUPER;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)handleActionWithIdentifier:(NSString *)identifier
               forLocalNotification:(UILocalNotification *)localNotification NS_REQUIRES_SUPER;
+#pragma clang diagnostic pop
 - (void)handleUserActivity:(NSDictionary *)userActivity NS_REQUIRES_SUPER;
 
 - (void)pushControllerWithName:(NSString *)name context:(id)context NS_REQUIRES_SUPER;
@@ -47,8 +50,11 @@
 
 - (void)didReceiveRemoteNotification:(NSDictionary *)remoteNotification
                       withCompletion:(void(^)(WKUserNotificationInterfaceType interface)) completionHandler NS_REQUIRES_SUPER;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)didReceiveLocalNotification:(UILocalNotification *)localNotification
                      withCompletion:(void(^)(WKUserNotificationInterfaceType interface)) completionHandler NS_REQUIRES_SUPER;
+#pragma clang diagnostic pop
 
 - (void)presentAlertControllerWithTitle:(NSString *)title message:(NSString *)message preferredStyle:(WKAlertControllerStyle)preferredStyle actions:(NSArray <WKAlertAction *>*)actions NS_REQUIRES_SUPER;
 
@@ -96,11 +102,14 @@
     [super handleActionWithIdentifier:identifier forRemoteNotification:remoteNotification];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)handleActionWithIdentifier:(NSString *)identifier
               forLocalNotification:(UILocalNotification *)localNotification
 {
     [super handleActionWithIdentifier:identifier forLocalNotification:localNotification];
 }
+#pragma clang diagnostic pop
 
 - (void)handleUserActivity:(NSDictionary *)userActivity
 {
@@ -233,11 +242,14 @@
     [super didReceiveRemoteNotification:remoteNotification withCompletion:completionHandler];
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)didReceiveLocalNotification:(UILocalNotification *)localNotification
                       withCompletion:(void(^)(WKUserNotificationInterfaceType interface)) completionHandler
 {
     self.lastCompletionBlock = completionHandler;
     [super didReceiveLocalNotification:localNotification withCompletion:completionHandler];
 }
+#pragma clang diagnostic pop
 
 @end
